@@ -1,2 +1,87 @@
-# Coding_Challenge_Algorithimic
-This project involves the development of a server script that binds to a port and responds to connections, allowing for an unlimited number of concurrent connections. The server script receives a "String" as a connection in clear text. The path to find the file is specified in a configuration file, which may contain other irrelevant elements. 
+# Coding_Challenge_Algorithimic_Sciences_done by Michael Owen Kimathi
+This project involves the development of a server script that binds to a port and responds to connections, allowing for an unlimited number of concurrent connections. The server script receives a "String" as a connection in clear text. The path to find the file is specified in a configuration file, which may contain other irrelevant elements. The server script reads the path from the configuration file and opens the file, searching for a full match of the received string in the file.
+
+This is a server application that listens for client connections and performs search operations based on the received data.
+
+## Prerequisites
+
+- Python 3.9 or higher installed
+- Docker (optional)
+- NGINX (for running the server in live environments)
+
+## Installation
+
+1. Clone the repository:
+
+   ```shell
+   git clone https://github.com/your-username/server-app.git
+
+    Navigate to the project directory:
+
+    shell
+    cd server-app
+
+    (Optional) If you prefer to use Docker, build the Docker image:
+
+    shell
+    docker build -t server-app .
+
+Configuration
+
+    Create a configuration file named .env in the project directory with the following contents:
+
+    env
+    REREAD_ON_QUERY=True
+    linuxpath="path/to/config/file.txt"
+    max_payload_size=1024
+
+    Adjust the values of linuxpath and max_payload_size according to your requirements. The REREAD_ON_QUERY variable determines whether the server will read the configuration file on each query.
+
+    Place your configuration file at the specified path (linuxpath) in the .env file.
+
+Usage
+
+    Without Docker:
+    Remember to create a virtual environment  
+    python install -r requirement.txt
+
+    shell
+    python server.py
+
+
+    With Docker (assuming you built the Docker image):
+
+    shell
+    docker run -p 44445:44445 --env-file .env server-app
+
+    Make sure to adjust the port number (44445) if necessary.
+
+    For running the server in live environments using NGINX:
+
+        Install NGINX on your server machine if not already installed.
+
+        Configure NGINX to serve the server application:
+
+            Copy the NGINX configuration file provided in the repository (nginx.conf) to the appropriate location on your server machine.
+
+            Update the NGINX configuration file (nginx.conf) with the necessary server block and proxy settings.
+
+            Adjust the server block settings according to your environment, such as the server name, IP address, SSL certificate paths, and ports.
+
+        Start NGINX to serve the server application:
+
+        shell
+        nginx -c /path/to/nginx.conf
+
+        Clients can connect to the server using the IP address of the server machine and the specified NGINX port.
+
+License
+
+This project is licensed under the MIT License.
+
+vbnet
+
+Please adjust the instructions based on your specific NGINX configuration, such as the server block settings, SSL certificate paths, and port numbers.
+
+Remember to provide the necessary NGINX configuration file (`nginx.conf`) with the appropriate settings based on your environment.
+
